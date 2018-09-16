@@ -2,9 +2,15 @@
 var Letter = function(underlyingCharacter) {
     this.underlyingCharacter = underlyingCharacter;
 
-    // Initially, the letter has not been guessed
-    this.guessed = false;
-
+    // Initially, the letter has not been guessed (unless the underlying character 
+    // is a space)
+    if (this.underlyingCharacter === " ") {
+        this.guessed = true;
+    }
+    else {
+        this.guessed = false;
+    }
+    
     // The toString function returns the underlying character if the letter has
     // been guessed; otherwise, it returns a placeholder (an underscore)
     this.toString = function() {
@@ -30,12 +36,12 @@ var Letter = function(underlyingCharacter) {
 // Export the Letter constructor
 module.exports = Letter;
 
-var l = new Letter("l");
-console.log(l);
-console.log(l.toString());
-l.guess('a');
-console.log(l);
-console.log(l.toString());
-l.guess('l');
-console.log(l);
-console.log(l.toString());
+// var l = new Letter("l");
+// console.log(l);
+// console.log(l.toString());
+// l.guess('a');
+// console.log(l);
+// console.log(l.toString());
+// l.guess('l');
+// console.log(l);
+// console.log(l.toString());
