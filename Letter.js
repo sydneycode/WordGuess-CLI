@@ -1,7 +1,3 @@
-// Global variable placeholder stores the character to be used as a placeholder
-// when the letter has not been guessed
-var PLACEHOLDER = "_";
-
 // Constructor function for creating Letter objects
 var Letter = function(underlyingCharacter) {
     this.underlyingCharacter = underlyingCharacter;
@@ -10,13 +6,14 @@ var Letter = function(underlyingCharacter) {
     this.guessed = false;
 
     // The getLetter function returns the underlying character if the letter has
-    // been guessed; otherwise, it returns a placeholder
+    // been guessed; otherwise, it returns a placeholder (an underscore)
     this.getLetter = function() {
+        var placeholder = "_";
         if (guessed) {
             return this.underlyingCharacter;
         }
         else {
-            return PLACEHOLDER;
+            return placeholder;
         }
     };
 
