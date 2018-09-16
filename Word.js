@@ -34,3 +34,4 @@ var Word = function(wordToGuess) {
 
 // Export the Word constructor
 module.exports = Word;
+
