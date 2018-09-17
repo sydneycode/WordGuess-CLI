@@ -9,3 +9,13 @@ var Word = require("./Word.js");
 
 // Prompt the user for each letter guess and keep track of the 
 // user's remaining guesses
+inquirer.prompt([
+    {
+        type: "input",
+        name: "userGuess",
+        message: "Guess a letter!"
+    }
+// Store the user's response in a variable called response
+]).then(function(response) {
+    console.log(response.userGuess);
+});
