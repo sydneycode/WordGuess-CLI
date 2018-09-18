@@ -47,7 +47,8 @@ Word.prototype.isGuessed = function() {
 // Export the Word constructor
 module.exports = Word;
 
-var w = new Word("sack of potatoes");
+// Print statements for testing the Word constructor
+/*var w = new Word("sack of potatoes");
 console.log(w);
 console.log(w.toString());
 console.log(w.guessLetter('m'));
@@ -67,4 +68,4 @@ console.log(w);
 console.log(w.toString());
 console.log(w.guessLetter('p'));
 console.log(w);
-console.log(w.toString());
+console.log(w.toString());*/

@@ -38,7 +38,8 @@ var Letter = function(underlyingCharacter) {
 // Export the Letter constructor
 module.exports = Letter;
 
-var l = new Letter("l");
+// Print statements for testing the Letter constructor
+/*var l = new Letter("l");
 console.log(l);
 console.log(l.toString());
 console.log(l.guess('a'));
@@ -47,4 +48,4 @@ console.log(l.toString());
 console.log(l.guess('l'));
 console.log(l);
 console.log(l.toString());
-console.log(l.guess('l'));
+console.log(l.guess('l'));*/
