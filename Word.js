@@ -14,7 +14,7 @@ var Word = function(wordToGuess) {
 
     // The getStringRepresentation function returns a string representing 
     // the word to be guessed by the user
-    this.getStringRepresentation = function() {
+    this.toString = function() {
         var representation = "";
         this.letters.forEach(function(letter) {
             var current = letter.toString();
@@ -30,6 +30,15 @@ var Word = function(wordToGuess) {
             letter.guess(character);
         });
     };
+};
+
+Word.prototype.isGuessed = function() {
+    for (var i = 0; i < this.letters.length; i++) {
+        if (!this.letters[i].guessed) {
+            return false;
+        }
+    }
+    return true;
 };
 
 // Export the Word constructor
