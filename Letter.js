@@ -27,21 +27,24 @@ var Letter = function(underlyingCharacter) {
     // matches the underlying character for the letter, then it updates the value of 
     // "guessed" to true
     this.guess = function(character) {
-        if (character === this.underlyingCharacter) {
+        if (character.toLowerCase() === this.underlyingCharacter.toLowerCase()) {
             this.guessed = true;
+            return true;
         }
+        return false;
     }
 };
 
 // Export the Letter constructor
 module.exports = Letter;
 
-// var l = new Letter("l");
-// console.log(l);
-// console.log(l.toString());
-// l.guess('a');
-// console.log(l);
-// console.log(l.toString());
-// l.guess('l');
-// console.log(l);
-// console.log(l.toString());
+var l = new Letter("l");
+console.log(l);
+console.log(l.toString());
+console.log(l.guess('a'));
+console.log(l);
+console.log(l.toString());
+console.log(l.guess('l'));
+console.log(l);
+console.log(l.toString());
+console.log(l.guess('l'));

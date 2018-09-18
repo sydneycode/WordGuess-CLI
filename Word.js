@@ -26,9 +26,12 @@ var Word = function(wordToGuess) {
     // The guessLetter function takes a character as an argument and calls the 
     // guess function on each letter object in the letters array
     this.guessLetter = function(character) {
+        var guessedCorrectly = false;
         this.letters.forEach(function(letter) {
-            letter.guess(character);
+            var guessed = letter.guess(character);
+            guessedCorrectly = guessed || guessedCorrectly;
         });
+        return guessedCorrectly;
     };
 };
 
@@ -44,24 +47,24 @@ Word.prototype.isGuessed = function() {
 // Export the Word constructor
 module.exports = Word;
 
-// var w = new Word("sack of potatoes");
-// console.log(w);
-// console.log(w.getStringRepresentation());
-// w.guessLetter('m');
-// console.log(w);
-// console.log(w.getStringRepresentation());
-// w.guessLetter('a');
-// console.log(w);
-// console.log(w.getStringRepresentation());
-// w.guessLetter('r');
-// console.log(w);
-// console.log(w.getStringRepresentation());
-// w.guessLetter('o');
-// console.log(w);
-// console.log(w.getStringRepresentation());
-// w.guessLetter('t');
-// console.log(w);
-// console.log(w.getStringRepresentation());
-// w.guessLetter('p');
-// console.log(w);
-// console.log(w.getStringRepresentation());
+var w = new Word("sack of potatoes");
+console.log(w);
+console.log(w.toString());
+console.log(w.guessLetter('m'));
+console.log(w);
+console.log(w.toString());
+console.log(w.guessLetter('a'));
+console.log(w);
+console.log(w.toString());
+console.log(w.guessLetter('r'));
+console.log(w);
+console.log(w.toString());
+console.log(w.guessLetter('o'));
+console.log(w);
+console.log(w.toString());
+console.log(w.guessLetter('t'));
+console.log(w);
+console.log(w.toString());
+console.log(w.guessLetter('p'));
+console.log(w);
+console.log(w.toString());

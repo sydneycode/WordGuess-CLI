@@ -5,7 +5,7 @@ var inquirer = require("inquirer");
 var Word = require("./Word.js");
 
 // The list of words from which a word will be selected
-var listOfWords = ['cat', 'dog', 'apple'];
+var listOfWords = ['Cat', 'Dog', 'Apple', 'Jurassic Park'];
 
 // Global variables related to the current word to be guessed
 var wordIndex;
@@ -13,10 +13,10 @@ var currentWord;
 var wordToGuess;
 
 // Global variable indicating how many guesses are remaining
-var numGuesses = 12;
+var numGuesses;
 
-var donePlaying = false;
-var wordGuessed = false;
+// var donePlaying = false;
+// var wordGuessed = false;
 
 function playWord() {
     selectWord();
@@ -24,7 +24,6 @@ function playWord() {
 }
 
 playWord();
-
 
 // Randomly select a word from a list of words and use the "Word"
 // constructor to store it
@@ -37,12 +36,15 @@ function selectWord() {
     wordToGuess = new Word(currentWord);
     console.log(wordToGuess.toString());
 
+    numGuesses = 12;
 }
 
 function promptUserToGuessLetter() {
-    if (wordToGuess.isGuessed()) {
+    if (wordToGuess.isGuessed() || numGuesses === 0) {
         console.log("done guessing this word");
-        checkIfUserWantsToPlayAgain();
+
+        //checkIfUserWantsToPlayAgain();
+        playWord();
     }
     else {
         inquirer.prompt([
@@ -50,22 +52,33 @@ function promptUserToGuessLetter() {
                 name: "letter",
                 message: "Guess a letter!",
                 validate: function(value) {
-                if (value.length == 1) {
+                if (value.length === 1) {
                     return true;
                 }
                 return false;
                 }
             }
         ]).then(function(response) {
+            
             console.log(response);
-            wordToGuess.guessLetter(response.letter);
+            var guessedCorrectly = wordToGuess.guessLetter(response.letter);
             console.log(wordToGuess.toString());
+
+            numGuesses--;
+            console.log(numGuesses);
+
+            if (guessedCorrectly) {
+                console.log("CORRECT!!!");
+            }
+            else {
+                console.log("INCORRECT!!!");
+                console.log(numGuesses + " guesses remaining");
+            }
+
             promptUserToGuessLetter();
             
         });
     }
-
-    
 }
 
 function checkIfUserWantsToPlayAgain() {
